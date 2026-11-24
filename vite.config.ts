@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react'
 import path from 'node:path'
 
 export default defineConfig(({ command }) => ({
-  // GitHub Pages menyajikan project page dari /<repo>/, sedangkan dev dari /.
-  // Bisa ditimpa lewat VITE_BASE_PATH (mis. "/" saat pakai custom domain).
-  base: command === 'build' ? process.env.VITE_BASE_PATH ?? '/neonpharma/' : '/',
+  // Default build memakai root "/" (Vercel, Netlify, custom domain).
+  // GitHub Pages menyajikan project page dari /<repo>/, jadi workflow CI
+  // menimpanya lewat VITE_BASE_PATH=/neonpharma/. Tanpa env itu, base = "/".
+  base: command === 'build' ? process.env.VITE_BASE_PATH ?? '/' : '/',
   plugins: [react()],
   resolve: {
     alias: {

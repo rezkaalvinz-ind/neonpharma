@@ -33,6 +33,7 @@ jobs:
       # dengan nama VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY.
       - name: Build
         env:
+          VITE_BASE_PATH: /neonpharma/
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL || 'https://xpmnuepaeqkorewovdwr.supabase.co' }}
           VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY || 'sb_publishable_XZBGjgAcP33kTbQ4Jac0DA_1W4FTNrI' }}
         run: npm run build
